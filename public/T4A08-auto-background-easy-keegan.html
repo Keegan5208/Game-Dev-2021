@@ -1,4 +1,3 @@
-
 <script>
 
 function myHitOther(my1,my2){
@@ -44,3 +43,41 @@ function myCheckAll(){
 
 
 </script>
+
+
+
+
+
+
+<h1 align=center style="color:yellow;">T4A08-auto-background-easy-fred.html</h1>
+
+
+<input type=button value="Move 10 pixels right" onClick="{
+  
+                    
+  document.getElementById('mySpan01').style.left = parseInt(document.getElementById('mySpan01').style.left) + 10
+  myCheckAll()
+                        
+}">
+
+
+<input type=button value="Helper Button" onClick="{
+                        
+  alert()
+                        
+}">
+
+
+
+
+<span id="mySpan01" style=" color:yellow; position:absolute; left:100; top:150; width:45; height:30">
+   Span 1 </span><br>
+
+<span id="mySpan02" style=" color:yellow; position:absolute; left:400; top:150; width:45; height:30"> 
+   Span 2 </span><br>
+
+<span id="mySpan03" style="  color:yellow; position:absolute; left:200; top:150; width:45; height:30"> 
+   Span 3 </span><br>
+
+<span id="mySpanBackground" style="z-index:-1; position:absolute; left:0; top:0; width:45; height:30"> 
+ <img src="myBackground01.jpg" width=3000> </span><br>
