@@ -3,18 +3,18 @@
   <script>
     context = c.getContext("2d");
     const bird = new Image();
-    bird.src = "IMG_20191225_090844_295.jpg ";
+    bird.src = "obama.gif ";
     birdX = birdDY = score = bestScore = 0;
     interval = birdSize = pipeWidth = topPipeBottomY = 24;
     birdY = pipeGap = 200;
     canvasSize = pipeX = 400;
     c.onclick = () => (birdDY = 9) ;
     setInterval(() => {
-      context.fillStyle = "white";
+      context.fillStyle = "indigo";
       context.fillRect(0,0,canvasSize,canvasSize); // Draw sky
       birdY -= birdDY -= 0.7; // Gravity
       context.drawImage(bird, birdX, birdY, birdSize * (524/374), birdSize); // Draw bird
-      context.fillStyle = "green";
+      context.fillStyle = "pink";
       pipeX -= 8; // Move pipe
       pipeX < -pipeWidth && // Pipe off screen?
         ((pipeX = canvasSize), (topPipeBottomY = pipeGap * Math.random())); // Reset pipe and randomize gap.
@@ -32,3 +32,9 @@
   </script>
 
 </body>
+
+
+
+<b onClick="{
+    location = 'shmindex.html'
+}"><br><br> <br> GO BACK!!!!   please.</b><br>
