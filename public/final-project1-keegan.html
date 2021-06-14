@@ -1,15 +1,29 @@
+<body onmousedown="{
+   
+  document.myGravity = -15
+  setTimeout(function(){ document.myGravity = 5 }, 100); 
+  myCheckAll()  
+
+}">
+
+
+
 <script>
 
 // Global variables works anywhere in your code
 
-document.myXmove = 6   // amount it moves in pixels
-document.myYmove = 5
 
-document.myXspeed = 60 // speed as a delay in milliseconds bigger is slower
-document.myYspeed = 25 
+document.myGravity = 5
+
+document.myXmove = -5   // amount it moves in pixels
+document.myYmove = 4
+
+document.myXspeed = 50 // speed as a delay in milliseconds bigger is slower
+document.myYspeed = 20 
 
 document.myXtimer = 0;
 document.myYtimer = 0;
+document.myTimer2 = 0;
 
 
 function myHitOther(my1,my2){
@@ -32,27 +46,35 @@ function myHitOther(my1,my2){
 
 function myCheckAll(){
 
-// Bounce of windoow walls
 
-if (parseInt(document.getElementById('mySpan01').style.left) < 10) {  // if we hit the left wall
-    document.myXmove = document.myXmove * -1   // then bounce
+if (parseInt(document.getElementById('mySpan01').style.top) -5  > window.innerHeight) { 
+    document.getElementById('mySpan01').style.top = '100px' 
+    alert('You Lose!')
+    location = 'final-project1-keegan.html'
 }
 
-if (parseInt(document.getElementById('mySpan01').style.left) + 65 > window.innerWidth) {  // if we hit the right wall
-    document.myXmove = document.myXmove * -1   // then bounce
-}
-
-
-// end of bounce code
 
   if(myHitOther('mySpan01', 'mySpan02')){
     document.getElementById('mySpan02').style.left = '-400px'
+    alert('You Lose!')
+    location = 'final-project1-keegan.html'
+  }
 
+  if(myHitOther('mySpan01', 'mySpan03')){
+    document.getElementById('mySpan03').style.left = '-400px'
+    alert('You Lose!')
+    location = 'final-project1-keegan.html'
+  }
+
+  if(myHitOther('mySpan01', 'mySpan04')){
+    document.getElementById('mySpan04').style.left = '-400px'
+    alert('You Lose!')
+    location = 'final-project1-keegan.html'
   }
 
 
 
-  if(myHitOther('mySpan01', 'mySpan03')){
+  if(myHitOther('mySpan01', 'mySpan200')){
     document.getElementById('mySpan03').style.left = '-400px'
     alert('You Win!')
     location = 'https://google.ca'
@@ -64,83 +86,80 @@ if (parseInt(document.getElementById('mySpan01').style.left) + 65 > window.inner
 
 
 function myXAuto(){
-  document.getElementById('mySpan01').style.left = parseInt(document.getElementById('mySpan01').style.left) + document.myXmove
 
-  document.getElementById('t2').style.left = parseInt(document.getElementById('t2').style.left) + document.myXmove
-  document.getElementById('t3').style.left = parseInt(document.getElementById('t3').style.left) + document.myXmove
-  document.getElementById('t4').style.left = parseInt(document.getElementById('t4').style.left) + document.myXmove
+  document.getElementById('mySpan01').style.top = parseInt(document.getElementById('mySpan01').style.top) + document.myGravity
+
+  document.getElementById('mySpan02').style.left = parseInt(document.getElementById('mySpan02').style.left) + document.myXmove 
+ 
+  document.getElementById('mySpan03').style.left = parseInt(document.getElementById('mySpan03').style.left) + document.myXmove 
+
+   document.getElementById('mySpan04').style.left = parseInt(document.getElementById('mySpan04').style.left) + document.myXmove 
+ 
 
   myCheckAll()
 }
 
 
-function myYAuto(){
-  document.getElementById('mySpan01').style.top = parseInt(document.getElementById('mySpan01').style.top) + document.myYmove
 
-  document.getElementById('t2').style.top = parseInt(document.getElementById('t2').style.top) + document.myYmove
-  document.getElementById('t3').style.top = parseInt(document.getElementById('t3').style.top) + document.myYmove
-  document.getElementById('t4').style.top = parseInt(document.getElementById('t4').style.top) + document.myYmove
-  myCheckAll()
-}
-
-
+clearInterval(document.myXtimer)                    
+document.myXtimer = setInterval( myXAuto , document.myXspeed);
 
 </script>
+  <script>
+    context = c.getContext("2d");
+    const bird = new Image();
+    bird.src = "obama.gif ";
+    birdX = birdDY = score = bestScore = 0;
+    interval = birdSize = pipeWidth = topPipeBottomY = 24;
+    birdY = pipeGap = 200;
+    canvasSize = pipeX = 400;
+    c.onclick = () => (birdDY = 9) ;
+    setInterval(() => {
+      context.fillStyle = "indigo";
+      context.fillRect(0,0,canvasSize,canvasSize); // Draw sky
+      birdY -= birdDY -= 0.7; // Gravity
+      context.drawImage(bird, birdX, birdY, birdSize * (524/374), birdSize); // Draw bird
+      context.fillStyle = "pink";
+      pipeX -= 8; // Move pipe
+      pipeX < -pipeWidth && // Pipe off screen?
+        ((pipeX = canvasSize), (topPipeBottomY = pipeGap * Math.random())); // Reset pipe and randomize gap.
+      context.fillRect(pipeX, 0, pipeWidth, topPipeBottomY); // Draw top pipe
+      context.fillRect(pipeX, topPipeBottomY + pipeGap, pipeWidth, canvasSize); // Draw bottom pipe
+      context.fillStyle = "black";
+      context.fillText(score++, 9, 25); // Increase and draw score
+      bestScore = bestScore < score ? score : bestScore; // New best score?
+      context.fillText(Best: ${bestScore}, 9, 50); // Draw best score
+      (((birdY < topPipeBottomY  birdY > topPipeBottomY + pipeGap) && pipeX < birdSize * (524/374))// Bird hit pipe?
+        birdY > canvasSize) && // Bird falls off screen
+      ((birdDY = 0), (birdY = 200), (pipeX = canvasSize), (score = 0)); // Bird died
+    }, interval)
+
+  </script>
+
+
+<h1 align=center></h1>
 
 
 
-
-
-<h1 align=center>Snake</h1>
-
-
-<input type=button value="D" onClick="{
-    clearInterval(document.myXtimer)   
-    clearInterval(document.myYtimer)  
-    document.myXmove = 5          
-    document.getElementById('t2').style.left = parseInt(document.getElementById('mySpan01').style.left) - 20
-    document.getElementById('t3').style.left = parseInt(document.getElementById('mySpan01').style.left) - 40
-    document.getElementById('t4').style.left = parseInt(document.getElementById('mySpan01').style.left) - 60                
-    document.myXtimer = setInterval( myXAuto , document.myXspeed);
+<!--
+<input type=button value="helper button" onClick="{
+  alert()
                         
 }">
+-->
 
-<input type=button value="A" onClick="{
-    clearInterval(document.myXtimer)   
-    clearInterval(document.myYtimer)  
-    document.myXmove = -5            
-    document.getElementById('t2').style.left = parseInt(document.getElementById('mySpan01').style.left) + 50
-    document.getElementById('t3').style.left = parseInt(document.getElementById('mySpan01').style.left) + 70
-    document.getElementById('t4').style.left = parseInt(document.getElementById('mySpan01').style.left) + 90
-               
-    document.myXtimer = setInterval( myXAuto , document.myXspeed);
-                        
-}">
 
-<input type=button value="S" onClick="{
-    clearInterval(document.myXtimer)   
-    clearInterval(document.myYtimer)   
-    document.myYmove = 4                 
-    document.myYtimer = setInterval( myYAuto , document.myYspeed);
-                        
-}">
-
-<span title="t2" id="t2" style="position:absolute; left:80; top:150; width:1-; height:10">t2</span><br>
-<span title="t3" id="t3" style="position:absolute; left:60; top:150; width:1-; height:10">t3</span><br>
-<span title="t4" id="t4" style="position:absolute; left:40; top:150; width:1-; height:10">t4</span><br>
-
-<input type=button value="W" onClick="{
-    clearInterval(document.myXtimer)   
-    clearInterval(document.myYtimer)   
-    document.myYmove = -4                 
-    document.myYtimer = setInterval( myYAuto , document.myYspeed);
-                        
-}">
 <span title="1" id="mySpan01" style="position:absolute; left:100; top:150; width:45; height:30">
-  <img src="side view train.jpg" width=100 > </span><br>
-<span title="2"  id="mySpan02" style="position:absolute; left:300; top:150; width:45; height:30"> 
-  <img src="pile of coal.jpg" width=100 > </span><br>
-<span title="3"  id="mySpan03" style="position:absolute; left:700; top:150; width:45; height:30"> 
-  <img src="train station game.png" width=100 > </span><br>
+   Span 1 </span><br>
+<span title="2"  id="mySpan02" style="position:absolute; left:900; top:100; width:45; height:30"> 
+   Span 2 </span><br>
+<span title="3"  id="mySpan03" style="position:absolute; left:900; top:300; width:45; height:30"> 
+   Span 3 </span><br>
+
+<span title="4"  id="mySpan04" style="position:absolute; left:1100; top:150; width:45; height:30"> 
+   Span 3 </span><br>
 
 
+
+
+</body>
