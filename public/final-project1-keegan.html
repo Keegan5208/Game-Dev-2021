@@ -15,7 +15,7 @@
 
 document.myGravity = 5
 
-document.myXmove = -5   // amount it moves in pixels
+document.myXmove = -7   // amount it moves in pixels
 document.myYmove = 4
 
 document.myXspeed = 50 // speed as a delay in milliseconds bigger is slower
@@ -50,26 +50,26 @@ function myCheckAll(){
 if (parseInt(document.getElementById('mySpan01').style.top) -5  > window.innerHeight) { 
     document.getElementById('mySpan01').style.top = '100px' 
     alert('You Lose!')
-    location = 'final-project1-keegan.html'
+    location = 'T4A17-flappy-bird-name.html'
 }
 
 
   if(myHitOther('mySpan01', 'mySpan02')){
     document.getElementById('mySpan02').style.left = '-400px'
     alert('You Lose!')
-    location = 'final-project1-keegan.html'
+    location = 'T4A17-flappy-bird-name.html'
   }
 
   if(myHitOther('mySpan01', 'mySpan03')){
     document.getElementById('mySpan03').style.left = '-400px'
     alert('You Lose!')
-    location = 'final-project1-keegan.html'
+    location = 'T4A17-flappy-bird-name.html'
   }
 
   if(myHitOther('mySpan01', 'mySpan04')){
     document.getElementById('mySpan04').style.left = '-400px'
     alert('You Lose!')
-    location = 'final-project1-keegan.html'
+    location = 'T4A17-flappy-bird-name.html'
   }
 
 
@@ -78,7 +78,8 @@ if (parseInt(document.getElementById('mySpan01').style.top) -5  > window.innerHe
     document.getElementById('mySpan03').style.left = '-400px'
     alert('You Win!')
     location = 'https://google.ca'
-  }
+  
+   }
 
   // your other checks go here
 
@@ -105,39 +106,12 @@ clearInterval(document.myXtimer)
 document.myXtimer = setInterval( myXAuto , document.myXspeed);
 
 </script>
-  <script>
-    context = c.getContext("2d");
-    const bird = new Image();
-    bird.src = "IMG_20191225_090844_295.jpg";
-    birdX = birdDY = score = bestScore = 0;
-    interval = birdSize = pipeWidth = topPipeBottomY = 24;
-    birdY = pipeGap = 200;
-    canvasSize = pipeX = 400;
-    c.onclick = () => (birdDY = 9) ;
-    setInterval(() => {
-      context.fillStyle = "black";
-      context.fillRect(0,0,canvasSize,canvasSize); // Draw sky
-      birdY -= birdDY -= 0.7; // Gravity
-      context.drawImage(bird, birdX, birdY, birdSize * (524/374), birdSize); // Draw bird
-      context.fillStyle = "white";
-      pipeX -= 8; // Move pipe
-      pipeX < -pipeWidth && // Pipe off screen?
-        ((pipeX = canvasSize), (topPipeBottomY = pipeGap * Math.random())); // Reset pipe and randomize gap.
-      context.fillRect(pipeX, 0, pipeWidth, topPipeBottomY); // Draw top pipe
-      context.fillRect(pipeX, topPipeBottomY + pipeGap, pipeWidth, canvasSize); // Draw bottom pipe
-      context.fillStyle = "yellow";
-      context.fillText(score++, 9, 25); // Increase and draw score
-      bestScore = bestScore < score ? score : bestScore; // New best score?
-      context.fillText(Best: ${bestScore}, 9, 50); // Draw best score
-      (((birdY < topPipeBottomY  birdY > topPipeBottomY + pipeGap) && pipeX < birdSize * (524/374))// Bird hit pipe?
-        birdY > canvasSize) && // Bird falls off screen
-      ((birdDY = 0), (birdY = 200), (pipeX = canvasSize), (score = 0)); // Bird died
-    }, interval)
-
-  </script>
 
 
-<h1 align=center></h1>
+
+
+
+<h1 align=center>flap</h1>
 
 
 
@@ -150,7 +124,7 @@ document.myXtimer = setInterval( myXAuto , document.myXspeed);
 
 
 <span title="1" id="mySpan01" style="position:absolute; left:100; top:150; width:45; height:30">
-   Span 1 </span><br>
+   <img src="..."> </span><br>
 <span title="2"  id="mySpan02" style="position:absolute; left:900; top:100; width:45; height:30"> 
    Span 2 </span><br>
 <span title="3"  id="mySpan03" style="position:absolute; left:900; top:300; width:45; height:30"> 
