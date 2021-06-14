@@ -10,7 +10,22 @@ document.myYspeed = 20
 
 document.myXtimer = 0;
 document.myYtimer = 0;
+   {<body  onKeyDown="{
+     let myAlphaKey = event.key
+     document.getElementById('myDiv01').innerHTML = 'You typed: ' + myAlphaKey.toLowerCase()
 
+
+      if (myAlphaKey.toLowerCase() == 'arrowright') {
+         document.getElementById('mySpan01').style.left = parseInt(document.getElementById('mySpan01').style.left) + 10
+         myCheckAll()
+     }
+
+      if (myAlphaKey.toLowerCase() == 'd') {   // go right
+         document.getElementById('mySpan01').style.left = parseInt(document.getElementById('mySpan01').style.left) + 10
+         myCheckAll()
+      }
+}">
+   }
 
 function myHitOther(my1,my2){
    left1   = parseInt(document.getElementById(my1).style.left)
