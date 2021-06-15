@@ -15,7 +15,7 @@
 
 document.myGravity = 5
 
-document.myXmove = -7   // amount it moves in pixels
+document.myXmove = -8   // amount it moves in pixels
 document.myYmove = 4
 
 document.myXspeed = 50 // speed as a delay in milliseconds bigger is slower
@@ -76,8 +76,6 @@ if (parseInt(document.getElementById('mySpan01').style.top) -5  > window.innerHe
     alert('You Lose!')
     location = 'final-project1-keegan.html'
   }
-
-// win
 
   if(myHitOther('mySpan01', 'mySpan200')){
     document.getElementById('mySpan200').style.left = '-400px'
