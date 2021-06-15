@@ -42,7 +42,12 @@ function myHitOther(my1,my2){
        return true
    }
 }
-
+  setInterval(function(){
+      document.getElementById('mySpanBackground').style.left = parseInt(document.getElementById('mySpanBackground').style.left) - 10
+      if (parseInt(document.getElementById('mySpanBackground').style.left) < -1900){
+       document.getElementById('mySpanBackground').style.left = '0px'
+      }
+  }, 30); 
 
 function myCheckAll(){
 
@@ -142,7 +147,8 @@ body {
   <img src="image1.png"> </span><br>
 <span title="4"  id="mySpan200" style="position:absolute; left:1700; top:400; width:45; height:30"> 
   WIN </span><br>
-
+<span id="mySpanBackground" style="z-index:-1; position:absolute; left:0; top:0; width:45; height:30"> 
+ <img src="myBackground01.jpg" width=3000> </span><br>
 
 
 </body>
