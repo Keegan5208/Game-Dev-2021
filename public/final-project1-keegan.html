@@ -77,7 +77,7 @@ if (parseInt(document.getElementById('mySpan01').style.top) -5  > window.innerHe
     location = 'final-project1-keegan.html'
   }
 
-
+// win
 
   if(myHitOther('mySpan01', 'mySpan200')){
     document.getElementById('mySpan200').style.left = '-400px'
@@ -86,11 +86,21 @@ if (parseInt(document.getElementById('mySpan01').style.top) -5  > window.innerHe
   
    }
 
-  // your other checks go here
+if(myHitOther('mySpan01', 'mySpan06')){
+    document.getElementById('mySpan06').style.left = '-400px'
+    alert('You Lose!')
+    location = 'final-project1-keegan.html'
 
 }
 
-
+if(myHitOther('mySpan01', 'mySpan07')){
+    document.getElementById('mySpan07').style.left = '-400px'
+    alert('You Lose!')
+    location = 'final-project1-keegan.html'
+   
+} 
+   
+   
 function myXAuto(){
 
   document.getElementById('mySpan01').style.top = parseInt(document.getElementById('mySpan01').style.top) + document.myGravity
